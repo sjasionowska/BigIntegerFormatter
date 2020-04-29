@@ -60,7 +60,7 @@ namespace BigIntegerFormatter
 			// TODO: List of suffixes. Needs to be improved.
 			var suffixes = new List<string>
 			{
-				"", "k", "M", "B", "a", "b", "c"
+				"", "k", "M", "B", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 			};
 
 			// Digits before a comma. Can be one, two or three of them - that depends on the exponentsIndex.
