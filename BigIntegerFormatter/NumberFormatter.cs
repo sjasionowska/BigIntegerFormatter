@@ -5,11 +5,21 @@ namespace BigIntegerFormatter
 
 	public class NumberFormatter
 	{
+		/// <summary>
+		/// Formats BigInteger using scientific notation.
+		/// </summary>
+		/// <param name="number">Number to format.</param>
+		/// <returns>Returns string that contains BigInteger formatted using scientific notation.</returns>
 		public static string FormatScientific(BigInteger number)
 		{
 			return FormatNumberScientificString(number.ToString());
 		}
 
+		/// <summary>
+		/// Formats BigInteger using engineering notation - with suffix.
+		/// </summary>
+		/// <param name="number">Number to format.</param>
+		/// <returns>Returns string that contains BigInteger formatted using engineering notation.</returns>
 		public static string FormatWithSuffix(BigInteger number)
 		{
 			return FormatNumberWithSuffixString(number.ToString());
@@ -26,7 +36,7 @@ namespace BigIntegerFormatter
 			string leadingDigit = numberString.Substring(0, 1);
 			string decimals = numberString.Substring(1, 3);
 
-			return string.Format("{0}.{1}e{2}", leadingDigit, decimals, exponent);
+			return $"{leadingDigit}.{decimals}e{exponent}";
 		}
 
 		private static string FormatNumberWithSuffixString(string numberString)
