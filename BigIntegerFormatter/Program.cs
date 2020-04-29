@@ -6,7 +6,7 @@
 	// ReSharper disable once ClassNeverInstantiated.Global
 	internal class Program
 	{
-		public static void Main(string[] args)
+		public static void Main()
 		{
 			// thousand
 			var b1 = new BigInteger(1000);
@@ -30,8 +30,8 @@
 
 		private static void DoStuff(BigInteger bigInteger)
 		{
-			var str = NumberFormatter.FormatScientific(bigInteger);
-			var str2 = NumberFormatter.FormatWithSuffix(bigInteger);
+			var str = BigIntegerFormatter.FormatScientific(bigInteger);
+			var str2 = BigIntegerFormatter.FormatWithSuffix(bigInteger);
 
 			Console.WriteLine("Number: " + bigInteger);
 			Console.WriteLine("FormatScientific: " + str);

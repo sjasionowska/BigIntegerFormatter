@@ -3,7 +3,10 @@ namespace BigIntegerFormatter
 	using System.Collections.Generic;
 	using System.Numerics;
 
-	public class NumberFormatter
+	/// <summary>
+	/// Static class used to format the BigIntegers.
+	/// </summary>
+	public static class BigIntegerFormatter
 	{
 		/// <summary>
 		/// Formats BigInteger using scientific notation.
