@@ -23,13 +23,16 @@
 			DoStuff(b4);
 
 			var b5 = new BigInteger(1254766);
-			DoStuff(b5);	
-			
+			DoStuff(b5);
+
 			var b6 = new BigInteger(456789098770923109);
 			DoStuff(b6);
 
 			var b7 = BigInteger.Parse("12392132222222222221098209381092831231202193");
 			DoStuff(b7);
+
+			var b8 = b7 + 1;
+			DoStuff(b8);
 
 			// Console.ReadLine();
 		}

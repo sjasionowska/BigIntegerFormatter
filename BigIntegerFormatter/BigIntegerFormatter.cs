@@ -19,7 +19,7 @@ namespace BigIntegerFormatter
 		}
 
 		/// <summary>
-		/// Formats BigInteger using engineering notation - with suffix.
+		/// Formats BigInteger using engineering notation - with a suffix.
 		/// </summary>
 		/// <param name="number">Number to format.</param>
 		/// <returns>Returns string that contains BigInteger formatted using engineering notation.</returns>
@@ -48,14 +48,14 @@ namespace BigIntegerFormatter
 			return $"{leadingDigit}.{decimals}e{exponent}";
 		}
 
-		private static string FormatNumberWithSuffixString(string numberString)
+		private static string FormatNumberWithSuffixString(string numberAsString)
 		{
 			// if number length is smaller than 3, just returns the number
-			if (numberString.Length < 3) return numberString;
+			if (numberAsString.Length < 3) return numberAsString;
 
 			// Counts scientific exponent. This will be used to determine which suffix from the 
 			// suffixes List should be used. 
-			var exponentIndex = numberString.Length - 1;
+			var exponentIndex = numberAsString.Length - 1;
 
 			// TODO: List of suffixes. Needs to be improved.
 			var suffixes = new List<string>
@@ -76,27 +76,32 @@ namespace BigIntegerFormatter
 			switch (exponentIndex % 3)
 			{
 				case 0:
-					leadingDigit = numberString.Substring(0, 1);
-					decimals = numberString.Substring(1, 3);
+					leadingDigit = numberAsString.Substring(0, 1);
+					decimals = numberAsString.Substring(1, 3);
 					break;
 
 				case 1:
-					leadingDigit = numberString.Substring(0, 2);
-					decimals = numberString.Substring(2, 3);
+					leadingDigit = numberAsString.Substring(0, 2);
+					decimals = numberAsString.Substring(2, 3);
 					break;
 
 				case 2:
-					leadingDigit = numberString.Substring(0, 3);
-					decimals = numberString.Substring(3, 3);
+					leadingDigit = numberAsString.Substring(0, 3);
+					decimals = numberAsString.Substring(3, 3);
 					break;
 			}
 
-			// Trims zeros from number's end.
+			// Trims zeros from the number's end.
 			var numberWithoutSuffix = $"{leadingDigit}.{decimals}";
 			numberWithoutSuffix = numberWithoutSuffix.TrimEnd('0').TrimEnd('.');
 
 			// Returns number in engineering format.
 			return $"{numberWithoutSuffix}{suffixes[exponentIndex / 3]}";
+		}
+
+		private static string GetSuffixForNumber(string numberAsString)
+		{
+			return "";
 		}
 	}
 }
