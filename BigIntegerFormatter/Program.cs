@@ -8,9 +8,27 @@
 	{
 		public static void Main()
 		{
+			var b0 = new BigInteger(877);
+			DoStuff(b0);
+			
 			// thousand
 			var b1 = new BigInteger(1000);
-			DoStuff(b1);
+			DoStuff(b1);		
+			
+			// thousand
+			var b9 = new BigInteger(1040);
+			DoStuff(b9);	
+			
+			// thousand
+			var b10 = new BigInteger(1045);
+			DoStuff(b10);		
+			
+			// thousand
+			var b11 = new BigInteger(11654);
+			DoStuff(b11);	
+			
+			var b12 = new BigInteger(125235);
+			DoStuff(b12);
 
 			var b2 = new BigInteger(10000);
 			DoStuff(b2);
