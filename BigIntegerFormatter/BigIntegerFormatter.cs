@@ -1,6 +1,8 @@
+// Some of the concepts taken from https://stackoverflow.com/questions/37907411/c-sharp-format-arbitrarily-large-biginteger-for-endless-game
+// question from Thijs Riezebeek stackoverlow user.
+
 namespace BigIntegerFormatter
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Numerics;
 
@@ -9,7 +11,6 @@ namespace BigIntegerFormatter
 	/// </summary>
 	public static class BigIntegerFormatter
 	{
-		// TODO: List of suffixes. Needs to be improved.
 		private static List<string> suffixes = new List<string>();
 
 		/// <summary>
@@ -123,34 +124,7 @@ namespace BigIntegerFormatter
 			// Fills the suffixes list if there's a need to
 			if (suffixes.Count - 1 < suffixIndex) FillSuffixesList(suffixes, suffixIndex);
 
-			// string suffix;
-
 			return suffixes[suffixIndex];
-
-			// switch (suffixIndex)
-			// {
-			// 	case 0:
-			// 		suffix = "";
-			// 		break;
-			// 	case 1:
-			// 		suffix = "k";
-			// 		break;
-			// 	case 2:
-			// 		suffix = "M";
-			// 		break;
-			// 	case 3:
-			// 		suffix = "B";
-			// 		break;
-			// 	case 4:
-			// 		suffix = "Q";
-			// 		break;
-			//
-			// 	default: return GetProceduralSuffix(suffixIndex);
-			// }
-			//
-			//
-			//
-			// return suffix;
 		}
 
 		private static List<string> CreateSuffixesList()
