@@ -4,7 +4,7 @@ A few classes - Program.cs and BigIntegerFormatter.cs actually - that allows for
 
 Requires System.Runtime.Numerics NuGet package. 
 
-Some of the concepts were taken from https://stackoverflow.com/questions/37907411/c-sharp-format-arbitrarily-large-biginteger-for-endless-game question from Thijs Riezebeek StackOverflow user.
+Some of the concepts were taken from https://stackoverflow.com/questions/37907411/c-sharp-format-arbitrarily-large-biginteger-for-endless-game question from Thijs Riezebeek (https://stackoverflow.com/users/4519644/thijs-riezebeek) StackOverflow user.
 
 # What is this
 
