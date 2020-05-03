@@ -16,7 +16,7 @@ When it comes to the engineering notation, this project uses a few pre-typed-in 
 - empty string for the numbers smaller than 1000, 
 - k for thousands, 
 - M for millions, 
-- B and Q ^likewise. 
+- B and Q likewise. 
 
 For bigger numbers, it generates the suffixes, in order:
 
