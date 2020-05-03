@@ -8,49 +8,24 @@
 	{
 		public static void Main()
 		{
-			var b0 = new BigInteger(877);
+			var b0 = new BigInteger(1000000000000);
 			DoStuff(b0);
-			
-			// thousand
-			var b1 = new BigInteger(1000);
-			DoStuff(b1);		
-			
-			// thousand
-			var b9 = new BigInteger(1040);
-			DoStuff(b9);	
-			
-			// thousand
-			var b10 = new BigInteger(1045);
-			DoStuff(b10);		
-			
-			// thousand
-			var b11 = new BigInteger(11654);
-			DoStuff(b11);	
-			
-			var b12 = new BigInteger(125235);
-			DoStuff(b12);
 
-			var b2 = new BigInteger(10000);
+			var b1 = new BigInteger(10000000000000);
+			DoStuff(b1);
+
+			var b2 = new BigInteger(10000000000000000);
 			DoStuff(b2);
 
-			var b3 = new BigInteger(100000);
+			var b3 = BigInteger.Parse(
+				"10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+
 			DoStuff(b3);
 
-			// million
-			var b4 = new BigInteger(1000000);
+			var b4 = BigInteger.Parse(
+				"10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+
 			DoStuff(b4);
-
-			var b5 = new BigInteger(1254766);
-			DoStuff(b5);
-
-			var b6 = new BigInteger(456789098770923109);
-			DoStuff(b6);
-
-			var b7 = BigInteger.Parse("12392132222222222221098209381092831231202193");
-			DoStuff(b7);
-
-			var b8 = b7 + 1;
-			DoStuff(b8);
 
 			// Console.ReadLine();
 		}

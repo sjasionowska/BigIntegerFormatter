@@ -1,5 +1,6 @@
 namespace BigIntegerFormatter
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Numerics;
 
@@ -9,10 +10,14 @@ namespace BigIntegerFormatter
 	public static class BigIntegerFormatter
 	{
 		// TODO: List of suffixes. Needs to be improved.
-		private static List<string> suffixes = new List<string>
-		{
-			"", "k", "M", "B", "Q", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "l", "m"
-		};
+		private static List<string> suffixes = new List<string>();
+
+		/// <summary>
+		/// If it's equal to 0, there are only suffixes from an empty string to Q on the suffixes list.
+		/// If it's equal to 1, there are a - z suffixes added.
+		/// If it's equal to 2, there are aa - zz suffixes added and so on.
+		/// </summary>
+		private static int suffixesCounterForGeneration = 0;
 
 		/// <summary>
 		/// Formats BigInteger using scientific notation. Returns a number without the exponent if the length
@@ -112,7 +117,13 @@ namespace BigIntegerFormatter
 		/// <returns>Suffix under a given index - suffix for a given number of thousands.</returns>
 		private static string GetSuffixForNumber(int suffixIndex)
 		{
-			string suffix;
+			// Creates initial suffixes List with an empty string, k, M, B and Q
+			if (suffixes.Count == 0) suffixes = CreateSuffixesList();
+
+			// Fills the suffixes list if there's a need to
+			if (suffixes.Count - 1 < suffixIndex) FillSuffixesList(suffixes, suffixIndex);
+
+			// string suffix;
 
 			return suffixes[suffixIndex];
 
@@ -142,9 +153,67 @@ namespace BigIntegerFormatter
 			// return suffix;
 		}
 
-		private static string GetProceduralSuffix(int suffixIndex)
+		private static List<string> CreateSuffixesList()
 		{
-			return "";
+			var suffixesList = new List<string>
+			{
+				"", "k", "M", "B", "Q"
+			};
+
+			return suffixesList;
+		}
+
+		private static void FillSuffixesList(List<string> suffixesList, int suffixIndex)
+		{
+			// while the suffixes list length - 1 is smaller than the suffix index of the suffix that we need
+			// (e.g.: when there's a need for an 'a' suffix:
+			// when suffixesList = "", "k", "M", "B", "Q"
+			// suffixesList.Count = 5, suffixIndex for a 'Q' is 4,
+			// suffixIndex for an 'a' is 5)
+			while (suffixesList.Count - 1 < suffixIndex)
+			{
+				// happens only once, when suffixList is filled only with 
+				// initial values
+				if (suffixesCounterForGeneration == 0)
+				{
+					for (int i = 97; i <= 122; i++)
+					{
+						// k excluded because of thousands suffix
+						if (i == 107) continue;
+
+						// cache the character a - z
+						char character = (char)i;
+						suffixesList.Add(char.ToString(character));
+					}
+
+					suffixesCounterForGeneration++;
+				}
+				else
+				{
+					// for every character (a - z) counts how many times the character should be generated as the suffix
+					for (var i = 97; i <= 122; i++)
+					{
+						// cache the character a - z
+						char character = (char)i;
+
+						// placeholder for a generated suffix
+						string generatedSuffix = "";
+
+						// counts how many times one character should be used as one suffix and adds them
+						// basing on the suffixesCounterForGeneration which is the number telling us how many times 
+						// the suffixes were generated
+						for (var counter = 1; counter <= suffixesCounterForGeneration + 1; counter++)
+						{
+							generatedSuffix += character.ToString();
+						}
+
+						// adds the generated suffix to the suffixes list
+						suffixesList.Add(generatedSuffix);
+					}
+
+					suffixesCounterForGeneration++;
+				}
+			}
 		}
 	}
 }
